@@ -7,16 +7,15 @@ output:
 
 ## Loading and preprocessing the data
 ```{r}
-require(ggplot2, data.table)
+require(ggplot2)
 DT <- read.csv(unz('activity.zip', 'activity.csv'))
 DT$date <- as.Date(DT$date, '%Y-%M-%d')
-DT <- data.table(DT)
 ```
 
 ## What is mean total number of steps taken per day?
 ```{r}
-DT.steps <- DT[, .(steps = sum(steps, na.rm = T)), by = date]
-DT.steps
+DT.steps <- data.frame(steps = tapply(DT$steps, DT$date, sum, na.rm = TRUE))
+
 qplot(data = DT.steps, 
       DT.steps$steps, 
       breaks = seq(0, 35000, by = 5000),
