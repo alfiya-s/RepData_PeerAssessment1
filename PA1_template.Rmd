@@ -1,5 +1,5 @@
 ---
-output: pdf_document
+output: html_document
 ---
 
 #Reproducible Research: Peer Assessment 1
@@ -58,7 +58,7 @@ qplot(DT.dt$steps, data = DT.dt, breaks = seq(0, 35000, by = 5000),
 mean(DT.dt$steps)
 median(DT.dt$steps)
 ```
-SOME USEFUL COMMENTS HERE
+Values differ from the estimates from the first part of the assignment, because we included missing observations with some data. Therefore, number of steps per day increased.
 
 ##Are there differences in activity patterns between weekdays and weekends?
 ```{r}
